@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Component } from "react";
+import ProductList from "./Components/ProductList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    productList: [
+      {
+        name: "Doce de abóbora",
+        price: 0.5,
+        discountPercentage: null,
+      },
+      {
+        name: "Salgadinho",
+        price: 2.5,
+        discountPercentage: 10,
+      },
+      {
+        name: "Refrigerante",
+        price: 8.5,
+        discountPercentage: 5,
+      },
+      {
+        name: "Maçã",
+        price: 0.7,
+        discountPercentage: null,
+      },
+      {
+        name: "Feijão",
+        price: 2.7,
+        discountPercentage: 15,
+      },
+    ],
+  };
+  render() {
+    return (
+      <div>
+        {this.state.productList.map((produto, index) => (
+          <ProductList item={produto} key={index}></ProductList>
+        ))}
+      </div>
+    );
+  }
 }
-
-export default App;
